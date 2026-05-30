@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "title": "Massa Residence Meublé | Logements de Luxe à Yaoundé",
+    "description": "Découvrez l'excellence de nos résidences meublées haut de gamme à Yaoundé, Cameroun. Confort exceptionnel, design élégant et service personnalisé."
+  },
+  "nav": {
+    "home": "Accueil",
+    "properties": "Résidences",
+    "about": "À Propos",
+    "contact": "Contact",
+    "location": "Localisation"
+  },
+  "hero": {
+    "tagline": "L'Excellence du Logement Meublé",
+    "title": "Massa Residence Meublé",
+    "subtitle": "Vivez l'expérience unique de résidences raffinées au cœur de Yaoundé. Design contemporain, confort absolu et service d'exception.",
+    "cta": "Découvrir nos résidences",
+    "ctaSecondary": "Planifier une visite"
+  },
+  "properties": {
+    "title": "Nos Résidences d'Exception",
+    "subtitle": "Chaque espace est une invitation à l'élégance",
+    "viewAll": "Explorer toutes nos résidences",
+    "viewDetails": "Découvrir",
+    "perNight": "/ nuit",
+    "perMonth": "/ mois",
+    "beds": "Chambres",
+    "bath": "Salle de bain",
+    "guests": "Personnes",
+    "area": "Surface",
+    "amenities": "Équipements",
+    "location": "Localisation",
+    "availability": "Disponibilité",
+    "available": "Disponible",
+    "booked": "Réservé",
+    "bookNow": "Réserver maintenant",
+    "contactUs": "Nous contacter"
+  },
+  "amenities": {
+    "wifi": "WiFi Haut Débit",
+    "ac": "Climatisation Premium",
+    "parking": "Parking Sécurisé",
+    "kitchen": "Cuisine Équipée",
+    "tv": "Smart TV",
+    "security": "Sécurité 24h/24",
+    "water": "Eau Chaude",
+    "generator": "Groupe Électrogène",
+    "laundry": "Buanderie",
+    "pool": "Piscine"
+  },
+  "advantages": {
+    "title": "L'Art du Bien-Vivre",
+    "subtitle": "Une philosophie d'excellence au service de votre confort",
+    "items": {
+      "quality": {
+        "title": "Excellence & Raffinement",
+        "description": "Des finitions haut de gamme et un mobilier soigneusement sélectionné pour créer des espaces d'exception"
+      },
+      "security": {
+        "title": "Sérénité Absolue",
+        "description": "Résidences sécurisées 24h/24 dans les quartiers les plus prisés de Yaoundé"
+      },
+      "service": {
+        "title": "Service Personnalisé",
+        "description": "Une équipe dédiée à votre bien-être, de la réservation jusqu'à votre départ"
+      },
+      "flexibility": {
+        "title": "Sur Mesure",
+        "description": "Séjours courts ou longs, nous adaptons nos offres à vos besoins"
+      }
+    }
+  },
+  "about": {
+    "title": "Notre Vision",
+    "subtitle": "L'Excellence comme Standard",
+    "description": "Massa Residence Meublé redéfinit l'art de l'hospitalité à Yaoundé. Nous créons des espaces où le raffinement rencontre le confort, où chaque détail est pensé pour sublimer votre expérience. Notre engagement : transformer votre séjour en un moment d'exception.",
+    "mission": {
+      "title": "Notre Engagement",
+      "description": "Offrir bien plus qu'un logement : une expérience immersive dans le luxe accessible, où qualité et attention personnalisée se conjuguent au quotidien."
+    },
+    "values": {
+      "title": "Nos Piliers",
+      "items": ["Excellence", "Authenticité", "Innovation", "Hospitalité"]
+    }
+  },
+  "location": {
+    "title": "Nous Trouver",
+    "subtitle": "Idéalement situés à Yaoundé - Fougerolle",
+    "address": "Yaoundé - Fougerolle, GPS: 2271 Rue 5.525",
+    "directions": "Obtenir l'itinéraire",
+    "description": "Nos résidences sont stratégiquement situées à Fougerolle, Yaoundé. Nous proposons également un service de location de véhicules pour faciliter vos déplacements."
+  },
+  "contact": {
+    "title": "Entrons en Contact",
+    "subtitle": "Notre équipe est à votre disposition pour créer votre expérience sur mesure",
+    "whatsapp": "Échanger sur WhatsApp",
+    "call": "Appeler",
+    "email": "Envoyer un email",
+    "address": "Yaoundé - Fougerolle, GPS: 2271 Rue 5.525",
+    "hours": "Disponible 7j/7 de 8h à 22h",
+    "form": {
+      "name": "Votre nom complet",
+      "email": "Votre adresse email",
+      "phone": "Votre numéro de téléphone",
+      "message": "Votre message",
+      "arrival": "Date d'arrivée souhaitée",
+      "departure": "Date de départ",
+      "guests": "Nombre de personnes",
+      "submit": "Envoyer ma demande",
+      "success": "Message envoyé avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "footer": {
+    "tagline": "L'excellence au cœur de Yaoundé",
+    "rights": "Tous droits réservés",
+    "links": {
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    }
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "back": "Retour",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "from": "À partir de"
+  }
+}

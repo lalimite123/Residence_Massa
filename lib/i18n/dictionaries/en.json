@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "title": "Massa Residence Meublé | Luxury Furnished Residences in Yaoundé",
+    "description": "Experience the excellence of our premium furnished residences in Yaoundé, Cameroon. Exceptional comfort, elegant design and personalized service."
+  },
+  "nav": {
+    "home": "Home",
+    "properties": "Residences",
+    "about": "About",
+    "contact": "Contact",
+    "location": "Location"
+  },
+  "hero": {
+    "tagline": "The Excellence of Furnished Living",
+    "title": "Massa Residence Meublé",
+    "subtitle": "Experience the unique atmosphere of refined residences in the heart of Yaoundé. Contemporary design, absolute comfort and exceptional service.",
+    "cta": "Discover our residences",
+    "ctaSecondary": "Schedule a visit"
+  },
+  "properties": {
+    "title": "Our Exceptional Residences",
+    "subtitle": "Each space is an invitation to elegance",
+    "viewAll": "Explore all residences",
+    "viewDetails": "Discover",
+    "perNight": "/ night",
+    "perMonth": "/ month",
+    "beds": "Bedrooms",
+    "bath": "Bathroom",
+    "guests": "Guests",
+    "area": "Area",
+    "amenities": "Amenities",
+    "location": "Location",
+    "availability": "Availability",
+    "available": "Available",
+    "booked": "Booked",
+    "bookNow": "Book now",
+    "contactUs": "Contact us"
+  },
+  "amenities": {
+    "wifi": "High-Speed WiFi",
+    "ac": "Premium Air Conditioning",
+    "parking": "Secure Parking",
+    "kitchen": "Equipped Kitchen",
+    "tv": "Smart TV",
+    "security": "24/7 Security",
+    "water": "Hot Water",
+    "generator": "Generator",
+    "laundry": "Laundry",
+    "pool": "Pool"
+  },
+  "advantages": {
+    "title": "The Art of Living Well",
+    "subtitle": "A philosophy of excellence at the service of your comfort",
+    "items": {
+      "quality": {
+        "title": "Excellence & Refinement",
+        "description": "Premium finishes and carefully selected furniture to create exceptional spaces"
+      },
+      "security": {
+        "title": "Absolute Serenity",
+        "description": "24/7 secured residences in the most sought-after neighborhoods of Yaoundé"
+      },
+      "service": {
+        "title": "Personalized Service",
+        "description": "A team dedicated to your well-being, from booking to departure"
+      },
+      "flexibility": {
+        "title": "Tailored to You",
+        "description": "Short or long stays, we adapt our offers to your needs"
+      }
+    }
+  },
+  "about": {
+    "title": "Our Vision",
+    "subtitle": "Excellence as Standard",
+    "description": "Massa Residence Meublé redefines the art of hospitality in Yaoundé. We create spaces where refinement meets comfort, where every detail is designed to enhance your experience. Our commitment: transform your stay into an exceptional moment.",
+    "mission": {
+      "title": "Our Commitment",
+      "description": "Offer more than accommodation: an immersive experience in accessible luxury, where quality and personalized attention combine daily."
+    },
+    "values": {
+      "title": "Our Pillars",
+      "items": ["Excellence", "Authenticity", "Innovation", "Hospitality"]
+    }
+  },
+  "location": {
+    "title": "Find Us",
+    "subtitle": "Ideally located in Yaoundé - Fougerolle",
+    "address": "Yaoundé - Fougerolle, GPS: 2271 Rue 5.525",
+    "directions": "Get directions",
+    "description": "Our residences are strategically located in Fougerolle, Yaoundé. We also offer vehicle rental services to make your travel easier."
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Our team is at your disposal to create your tailored experience",
+    "whatsapp": "Chat on WhatsApp",
+    "call": "Call",
+    "email": "Send email",
+    "address": "Yaoundé - Fougerolle, GPS: 2271 Rue 5.525",
+    "hours": "Available 7 days a week from 8am to 10pm",
+    "form": {
+      "name": "Your full name",
+      "email": "Your email address",
+      "phone": "Your phone number",
+      "message": "Your message",
+      "arrival": "Desired arrival date",
+      "departure": "Departure date",
+      "guests": "Number of guests",
+      "submit": "Send my request",
+      "success": "Message sent successfully!",
+      "error": "An error occurred. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "Excellence in the heart of Yaoundé",
+    "rights": "All rights reserved",
+    "links": {
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "Error",
+    "from": "From"
+  }
+}
