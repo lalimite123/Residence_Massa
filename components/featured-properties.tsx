@@ -19,7 +19,6 @@ const propertyTypes = [
   { id: "all", label: { fr: "Tous", en: "All" } },
   { id: "studio", label: { fr: "Studios", en: "Studios" } },
   { id: "apartment", label: { fr: "Appartements", en: "Apartments" } },
-  { id: "villa", label: { fr: "Villas", en: "Villas" } },
 ]
 
 export function FeaturedProperties({ dict, locale }: FeaturedPropertiesProps) {
@@ -31,9 +30,8 @@ export function FeaturedProperties({ dict, locale }: FeaturedPropertiesProps) {
   const filteredProperties = activeType === "all" 
     ? allProperties 
     : allProperties.filter(p => {
-        if (activeType === "studio") return p.bedrooms === 0 || p.bedrooms === 1
-        if (activeType === "apartment") return p.bedrooms >= 1 && p.bedrooms <= 2
-        if (activeType === "villa") return p.bedrooms >= 3
+        if (activeType === "studio") return p.bedrooms <= 1
+        if (activeType === "apartment") return p.bedrooms >= 2
         return true
       })
 
@@ -76,7 +74,7 @@ export function FeaturedProperties({ dict, locale }: FeaturedPropertiesProps) {
             className="text-center mb-12"
           >
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3 block">
-              Accommodation Layout Pack
+              Fougerolle, Yaoundé
             </span>
             <h2 className="text-3xl md:text-4xl font-medium text-foreground tracking-tight">
               {dict.properties.title.toLowerCase()}

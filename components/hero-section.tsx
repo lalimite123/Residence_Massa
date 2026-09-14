@@ -2,9 +2,9 @@
 
 import { useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, Star, Users, MapPin, Phone } from "lucide-react"
+import { ArrowRight, Star, Users, MapPin, MessageCircle } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import { HeroCarousel } from "@/components/hero-carousel"
 import type { Dictionary } from "@/lib/i18n"
 import type { Locale } from "@/lib/i18n"
 
@@ -13,6 +13,8 @@ interface HeroSectionProps {
   locale: Locale
 }
 
+const WHATSAPP_URL = "https://wa.me/237676961949"
+
 export function HeroSection({ dict, locale }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -20,204 +22,185 @@ export function HeroSection({ dict, locale }: HeroSectionProps) {
     offset: ["start start", "end start"],
   })
 
-  // Enhanced parallax effects
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.3])
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.3])
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -100])
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 0.9])
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.55, 0.9])
 
-  // Translated content based on locale
   const content = {
     badge: locale === "fr" ? "Disponible maintenant" : "Available now",
-    title: locale === "fr" 
-      ? "Votre partenaire de confiance pour un" 
-      : "Your trusted partner for",
-    titleHighlight: locale === "fr" ? "logement de qualite" : "quality accommodation",
-    subtitle: locale === "fr"
-      ? "Massa Residence offre des residences meublees de qualite a Yaounde, creant des espaces confortables et fonctionnels."
-      : "Massa Residence offers premium furnished residences in Yaounde, creating beautiful and functional spaces with quality comfort.",
+    title: locale === "fr" ? "Votre partenaire de confiance pour un" : "Your trusted partner for",
+    titleHighlight: locale === "fr" ? "logement de qualité" : "quality accommodation",
+    subtitle:
+      locale === "fr"
+        ? "Studios et appartements meublés à Fougerolle, Yaoundé. Des espaces confortables, équipés et prêts à vivre."
+        : "Furnished studios and apartments in Fougerolle, Yaoundé. Comfortable, fully equipped spaces ready to live in.",
     cta: dict.hero.cta,
+    ctaSecondary: locale === "fr" ? "Écrire sur WhatsApp" : "Chat on WhatsApp",
+    ctaHint: locale === "fr" ? "Réponse en quelques minutes" : "Reply within minutes",
     stats: {
-      clients: locale === "fr" ? "Clients Satisfaits" : "Satisfied Clients",
-      rating: locale === "fr" ? "Note" : "Rating",
+      clients: locale === "fr" ? "Clients satisfaits" : "Satisfied clients",
+      rating: locale === "fr" ? "Note moyenne" : "Average rating",
+      location: "Yaoundé",
     },
-    findHome: locale === "fr" ? "Trouver Votre Logement" : "Find Your Home",
-    location: "Yaounde - Fougerolle",
-    contact: "+237 676 961 949",
   }
 
+  const fadeUp = (delay: number) => ({
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+  })
+
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen flex items-end overflow-hidden"
-    >
-      {/* Video Background with Enhanced Parallax */}
-      <motion.div 
-        style={{ scale: videoScale, y: videoY }}
-        className="absolute inset-0 z-0 origin-center"
-      >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+    <section ref={containerRef} className="relative min-h-screen flex items-end overflow-hidden">
+      {/* Image carousel background with parallax */}
+      <motion.div style={{ scale: bgScale, y: bgY }} className="absolute inset-0 z-0 origin-center">
+        <HeroCarousel
+          locale={locale}
+          overlay={
+            <>
+              <motion.div
+                style={{ opacity: overlayOpacity }}
+                className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+            </>
+          }
+        />
       </motion.div>
 
-      {/* Animated Gradient Overlay */}
-      <motion.div 
-        style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 z-[1] bg-gradient-to-t from-black via-black/60 to-black/20" 
-      />
-      
-      {/* Secondary gradient for depth */}
-      <div className="absolute inset-0 z-[2] bg-gradient-to-br from-primary/10 via-transparent to-amber-900/10" />
-
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 z-[3] overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main Content */}
-      <motion.div 
+      {/* Main content */}
+      <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="container mx-auto px-4 md:px-6 relative z-10 pb-12 md:pb-20 pt-28"
+        className="container mx-auto px-4 md:px-6 relative z-10 pb-14 md:pb-24 pt-28 pointer-events-none"
       >
-        <div className="max-w-3xl">
-          {/* Availability Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full mb-5 border border-white/20"
-          >
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-xs text-white/90">{content.badge}</span>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative max-w-2xl pointer-events-auto"
+        >
+          {/* Soft ambient glow behind the panel for depth */}
+          <div
+            aria-hidden
+            className="absolute -inset-6 rounded-[2rem] bg-amber-400/15 blur-3xl opacity-70"
+          />
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium text-white mb-4 leading-[1.15] tracking-tight text-balance"
-          >
-            {content.title}
-            <br />
-            <span className="italic text-amber-400 drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]">{content.titleHighlight}</span>
-          </motion.h1>
+          {/* Glass panel */}
+          <div className="relative rounded-2xl md:rounded-[1.75rem] border border-white/15 bg-black/35 backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8),inset_0_1px_0_0_rgba(255,255,255,0.18)] overflow-hidden">
+            {/* Top-left light sheen */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 rounded-full bg-white/10 blur-3xl"
+            />
+            {/* Bottom-right brand tint */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-32 -right-24 w-80 h-80 rounded-full bg-amber-500/15 blur-3xl"
+            />
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-sm md:text-base text-white/70 mb-6 max-w-xl leading-relaxed"
-          >
-            {content.subtitle}
-          </motion.p>
+            <div className="relative p-6 md:p-9">
+              {/* Badge */}
+              <motion.div
+                {...fadeUp(0.2)}
+                className="inline-flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-white/10 border border-white/15 mb-5"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/85">
+                  {content.badge}
+                </span>
+              </motion.div>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap items-center gap-3 mb-8"
-          >
-            <Button
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 h-10 text-sm"
-            >
-              <Link href={`/${locale}#properties`}>
-                {content.cta}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full px-5 h-10 text-sm border-white/30 text-white bg-white/5 hover:bg-white/10 backdrop-blur-sm"
-            >
-              <a href="https://wa.me/237676961949" target="_blank" rel="noopener noreferrer">
-                <Phone className="w-4 h-4 mr-2" />
-                {dict.hero.ctaSecondary}
-              </a>
-            </Button>
-          </motion.div>
+              {/* Title */}
+              <motion.h1
+                {...fadeUp(0.3)}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-medium text-white mb-4 leading-[1.08] tracking-tight text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+              >
+                {content.title}{" "}
+                <span className="italic text-amber-300">{content.titleHighlight}</span>
+              </motion.h1>
 
-          {/* Stats Row */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4 md:gap-8"
-          >
-            {/* Avatars + Clients */}
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-primary/60 to-amber-500/60 border-2 border-black flex items-center justify-center"
-                  >
-                    <Users className="w-3 h-3 md:w-4 md:h-4 text-white" />
+              {/* Subtitle */}
+              <motion.p
+                {...fadeUp(0.4)}
+                className="text-sm md:text-base text-white/80 mb-7 max-w-lg leading-relaxed text-pretty"
+              >
+                {content.subtitle}
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div {...fadeUp(0.5)} className="flex flex-col sm:flex-row sm:items-center gap-3 mb-7">
+                <Link
+                  href={`/${locale}#properties`}
+                  className="group relative inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 text-stone-950 text-sm font-semibold shadow-[0_10px_30px_-8px_rgba(251,191,36,0.6),inset_0_1px_0_0_rgba(255,255,255,0.5)] hover:shadow-[0_14px_40px_-8px_rgba(251,191,36,0.85)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  {content.cta}
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 h-12 pl-1.5 pr-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white hover:bg-white/15 hover:border-white/30 transition-all duration-300"
+                >
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] text-white shadow-[0_6px_16px_-4px_rgba(37,211,102,0.6)]">
+                    <MessageCircle className="w-4 h-4" />
+                  </span>
+                  <span className="flex flex-col leading-none text-left">
+                    <span className="text-sm font-medium">{content.ctaSecondary}</span>
+                    <span className="text-[11px] text-white/60 mt-0.5">{content.ctaHint}</span>
+                  </span>
+                </a>
+              </motion.div>
+
+              {/* Stats strip */}
+              <motion.div
+                {...fadeUp(0.6)}
+                className="grid grid-cols-3 divide-x divide-white/10 rounded-xl border border-white/10 bg-white/[0.06]"
+              >
+                <div className="flex items-center gap-2.5 px-3 py-3 md:px-4">
+                  <div className="hidden sm:flex -space-x-2 shrink-0">
+                    {[0, 1, 2].map((i) => (
+                      <span
+                        key={i}
+                        className="w-7 h-7 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 border-2 border-black/60 flex items-center justify-center"
+                      >
+                        <Users className="w-3 h-3 text-white" />
+                      </span>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div>
-                <p className="text-base md:text-lg font-semibold text-white">500+</p>
-                <p className="text-[10px] md:text-xs text-white/60">{content.stats.clients}</p>
-              </div>
-            </div>
+                  <div className="min-w-0">
+                    <p className="text-base md:text-lg font-semibold text-white leading-none">500+</p>
+                    <p className="text-[10px] md:text-[11px] text-white/60 mt-1 truncate">{content.stats.clients}</p>
+                  </div>
+                </div>
 
-            {/* Rating */}
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 md:w-5 md:h-5 fill-amber-400 text-amber-400" />
-              <div>
-                <p className="text-base md:text-lg font-semibold text-white">4.9</p>
-                <p className="text-[10px] md:text-xs text-white/60">{content.stats.rating}</p>
-              </div>
-            </div>
+                <div className="flex items-center gap-2.5 px-3 py-3 md:px-4">
+                  <Star className="w-5 h-5 shrink-0 fill-amber-300 text-amber-300" />
+                  <div className="min-w-0">
+                    <p className="text-base md:text-lg font-semibold text-white leading-none">4.9</p>
+                    <p className="text-[10px] md:text-[11px] text-white/60 mt-1 truncate">{content.stats.rating}</p>
+                  </div>
+                </div>
 
-            {/* Location Badge - Hidden on small mobile */}
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-              <MapPin className="w-3 h-3 text-primary" />
-              <span className="text-xs text-white/80">{content.location}</span>
+                <div className="flex items-center gap-2.5 px-3 py-3 md:px-4">
+                  <MapPin className="w-5 h-5 shrink-0 text-amber-300" />
+                  <div className="min-w-0">
+                    <p className="text-sm md:text-base font-semibold text-white leading-none truncate">
+                      Fougerolle
+                    </p>
+                    <p className="text-[10px] md:text-[11px] text-white/60 mt-1 truncate">{content.stats.location}</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-
-            {/* Find Home Button */}
-            <Link
-              href={`/${locale}#properties`}
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:bg-white/20 transition-colors"
-            >
-              <span className="text-sm text-white">{content.findHome}</span>
-              <ArrowRight className="w-3 h-3 text-white" />
-            </Link>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

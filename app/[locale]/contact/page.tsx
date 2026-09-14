@@ -1,9 +1,9 @@
-import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Clock, MessageCircle, Car, Facebook } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, MessageCircle, Facebook, ArrowUpRight } from "lucide-react"
 import { getDictionary, type Locale } from "@/lib/i18n"
 import { SiteNavigation } from "@/components/site-navigation"
 import { SiteFooter } from "@/components/site-footer"
+import { ContactForm } from "@/components/contact-form"
 import { WhatsAppButton, WhatsAppLink, WHATSAPP_NUMBERS } from "@/components/whatsapp-button"
 
 export default async function ContactPage({
@@ -13,205 +13,193 @@ export default async function ContactPage({
 }) {
   const { locale } = await params
   const dict = await getDictionary(locale)
+  const fr = locale === "fr"
 
   const content = {
-    getInTouch: locale === "fr" ? "Nous joindre" : "Get in touch",
-    fastResponse: locale === "fr" ? "Reponse rapide garantie" : "Fast response guaranteed",
-    hours: locale === "fr" ? "Horaires" : "Hours",
-    services: locale === "fr" ? "Nos Services" : "Our Services",
-    furnishedResidences: locale === "fr" ? "Residences Meublees" : "Furnished Residences",
-    vehicleRental: locale === "fr" ? "Location de Vehicules" : "Vehicle Rental",
-    weHelpYou: locale === "fr" 
-      ? "Nous vous accompagnons dans votre recherche de logement a Yaounde. N'hesitez pas a nous contacter pour toute question."
-      : "We help you find accommodation in Yaounde. Feel free to contact us for any questions.",
-    viewOnMaps: locale === "fr" ? "Voir sur Google Maps" : "View on Google Maps",
+    eyebrow: fr ? "Contact" : "Contact",
+    formTitle: fr ? "Demande de réservation" : "Booking request",
+    formSubtitle: fr
+      ? "Indiquez vos dates et le logement souhaité, nous confirmons la disponibilité en quelques minutes."
+      : "Tell us your dates and preferred unit, we confirm availability within minutes.",
+    channelsTitle: fr ? "Nos coordonnées" : "Our details",
+    hours: fr ? "Horaires" : "Hours",
+    viewOnMaps: fr ? "Ouvrir dans Google Maps" : "Open in Google Maps",
+    address: "Yaoundé - Fougerolle",
+    gps: "GPS : 2271 Rue 5.525",
+    whatsappMessage: fr
+      ? "Bonjour Massa Residence, je suis intéressé(e) par vos logements à Yaoundé."
+      : "Hello Massa Residence, I am interested in your accommodations in Yaoundé.",
+    fastResponse: fr ? "Réponse en quelques minutes" : "Reply within minutes",
+    directTitle: fr ? "Vous préférez échanger directement ?" : "Prefer to talk directly?",
+    directText: fr
+      ? "Notre équipe est disponible 7j/7 sur WhatsApp pour répondre à vos questions et organiser votre arrivée."
+      : "Our team is available 7 days a week on WhatsApp to answer your questions and arrange your arrival.",
   }
+
+  const channels = [
+    {
+      icon: Phone,
+      label: dict.contact.call,
+      value: "+237 676 961 949",
+      href: `tel:+${WHATSAPP_NUMBERS.primary}`,
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "massaresidence13@gmail.com",
+      href: "mailto:massaresidence13@gmail.com",
+    },
+    {
+      icon: Facebook,
+      label: "Facebook",
+      value: "Massa Residence",
+      href: "https://www.facebook.com/share/1MMNRcxk8Y/",
+      external: true,
+    },
+    {
+      icon: Clock,
+      label: content.hours,
+      value: dict.contact.hours,
+    },
+  ]
 
   return (
     <>
       <SiteNavigation locale={locale} dict={dict} />
-      <main className="pt-20 md:pt-24">
+      <main className="pt-20 md:pt-24 bg-background">
         {/* Header */}
-        <section className="py-12 md:py-20 bg-secondary/10">
-          <div className="container mx-auto px-4 md:px-6">
+        <section className="container mx-auto px-4 md:px-6 pt-10 md:pt-16 pb-10 md:pb-14">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div className="max-w-2xl">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">{content.eyebrow}</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-[1.05] tracking-tight text-balance mb-5">
                 {dict.contact.title}
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground">{dict.contact.subtitle}</p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">{dict.contact.subtitle}</p>
             </div>
+            <WhatsAppLink
+              message={content.whatsappMessage}
+              className="inline-flex items-center gap-3 self-start lg:self-auto px-5 h-12 rounded-full bg-[#25D366] text-white text-sm font-medium hover:bg-[#20bd5a] transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              {dict.contact.whatsapp}
+            </WhatsAppLink>
           </div>
         </section>
 
-        {/* Contact Content */}
-        <section className="py-10 md:py-20 bg-background">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-              {/* Contact Info */}
-              <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
-                  {content.getInTouch}
-                </h2>
-
-                <div className="space-y-4 md:space-y-6">
-                  {/* WhatsApp - Primary */}
-                  <WhatsAppLink
-                    message={locale === "fr" 
-                      ? "Bonjour Massa Residence, je suis interesse(e) par vos logements a Yaounde."
-                      : "Hello Massa Residence, I am interested in your accommodations in Yaounde."}
-                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-[#25D366]/10 rounded-lg border border-[#25D366]/30 hover:bg-[#25D366]/20 transition-colors group"
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#25D366] rounded-full flex items-center justify-center flex-shrink-0">
-                      <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-[#25D366] transition-colors">
-                        WhatsApp
-                      </h3>
-                      <p className="text-muted-foreground text-xs md:text-sm mb-2">
-                        {content.fastResponse}
-                      </p>
-                      <p className="text-foreground font-medium text-sm md:text-base">+237 676 961 949</p>
-                      <p className="text-foreground font-medium text-sm md:text-base">+237 698 217 257</p>
-                    </div>
-                  </WhatsAppLink>
-
-                  {/* Phone */}
-                  <a
-                    href={`tel:+${WHATSAPP_NUMBERS.primary}`}
-                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {dict.contact.call}
-                      </h3>
-                      <p className="text-foreground font-medium text-sm md:text-base">+237 676 961 949</p>
-                    </div>
-                  </a>
-
-                  {/* Email */}
-                  <a
-                    href="mailto:massaresidence13@gmail.com"
-                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                        Email
-                      </h3>
-                      <p className="text-foreground font-medium text-sm md:text-base break-all">massaresidence13@gmail.com</p>
-                    </div>
-                  </a>
-
-                  {/* Facebook */}
-                  <a
-                    href="https://www.facebook.com/share/1MMNRcxk8Y/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Facebook className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-blue-500 transition-colors">
-                        Facebook
-                      </h3>
-                      <p className="text-muted-foreground text-sm">Massa Residence</p>
-                    </div>
-                  </a>
-
-                  {/* Address */}
-                  <a
-                    href="https://maps.app.goo.gl/TjNjhEFNHhQfaRm29?g_st=aw"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-card rounded-lg border border-border hover:border-primary/30 transition-colors group"
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {dict.properties.location}
-                      </h3>
-                      <p className="text-foreground text-sm md:text-base">Yaounde - Fougerolle</p>
-                      <p className="text-muted-foreground text-sm">GPS: 2271 Rue 5.525</p>
-                      <p className="text-primary text-sm mt-1">{content.viewOnMaps}</p>
-                    </div>
-                  </a>
-
-                  {/* Hours */}
-                  <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-card rounded-lg border border-border">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">
-                        {content.hours}
-                      </h3>
-                      <p className="text-muted-foreground text-sm">{dict.contact.hours}</p>
-                    </div>
-                  </div>
+        {/* Main grid */}
+        <section className="container mx-auto px-4 md:px-6 pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Form */}
+            <div className="lg:col-span-7">
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-10">
+                <div className="mb-8">
+                  <h2 className="text-2xl md:text-3xl font-medium text-foreground mb-2">{content.formTitle}</h2>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{content.formSubtitle}</p>
                 </div>
-              </div>
-
-              {/* Info Card */}
-              <div>
-                <div className="bg-secondary/10 rounded-lg p-6 md:p-8 h-full flex flex-col justify-center">
-                  <div className="text-center mb-6 md:mb-8">
-                    <Image
-                      src="/images/logo-transparent.png"
-                      alt="Massa Residence"
-                      width={200}
-                      height={100}
-                      className="w-auto h-16 md:h-20 object-contain mx-auto mb-4"
-                    />
-                    <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
-                      Massa Residence
-                    </h3>
-                    <p className="text-muted-foreground text-sm md:text-base">{dict.footer.tagline}</p>
-                  </div>
-
-                  {/* Services */}
-                  <div className="mb-6 md:mb-8">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3 text-center">
-                      {content.services}
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 rounded-full text-xs md:text-sm text-primary">
-                        {content.furnishedResidences}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 rounded-full text-xs md:text-sm text-amber-600">
-                        <Car className="w-3 h-3" />
-                        {content.vehicleRental}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
-                      {content.weHelpYou}
-                    </p>
-
-                    <WhatsAppLink
-                      message={locale === "fr" 
-                        ? "Bonjour Massa Residence, je suis interesse(e) par vos logements a Yaounde."
-                        : "Hello Massa Residence, I am interested in your accommodations in Yaounde."}
-                      className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#25D366] text-white rounded-lg font-medium hover:bg-[#20bd5a] transition-colors text-sm md:text-base"
-                    >
-                      <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                      {dict.contact.whatsapp}
-                    </WhatsAppLink>
-                  </div>
-                </div>
+                <ContactForm dict={dict} locale={locale} />
               </div>
             </div>
+
+            {/* Side column */}
+            <aside className="lg:col-span-5 flex flex-col gap-6">
+              {/* Address / map card */}
+              <a
+                href="https://maps.app.goo.gl/TjNjhEFNHhQfaRm29?g_st=aw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-2xl border border-border aspect-[4/3] block"
+              >
+                <Image
+                  src="/images/real-entree-bar.jpg"
+                  alt={fr ? "Entrée d'un appartement Massa Residence" : "Entrance of a Massa Residence apartment"}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 flex items-end justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-primary mb-2">
+                      <MapPin className="w-4 h-4" />
+                      <span className="text-xs uppercase tracking-[0.2em]">{dict.properties.location}</span>
+                    </div>
+                    <p className="text-lg font-medium text-white">{content.address}</p>
+                    <p className="text-sm text-white/70">{content.gps}</p>
+                    <p className="text-xs text-white/60 mt-2 group-hover:text-white transition-colors">{content.viewOnMaps}</p>
+                  </div>
+                  <span className="w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm flex items-center justify-center text-white flex-shrink-0 transition-colors group-hover:bg-white group-hover:text-black">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </a>
+
+              {/* Channels list */}
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+                <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-5">{content.channelsTitle}</h2>
+                <ul className="divide-y divide-border">
+                  {channels.map(({ icon: Icon, label, value, href, external }) => {
+                    const inner = (
+                      <>
+                        <span className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-4 h-4" />
+                        </span>
+                        <span className="flex-1 min-w-0">
+                          <span className="block text-xs text-muted-foreground">{label}</span>
+                          <span className="block text-sm md:text-base text-foreground font-medium truncate">{value}</span>
+                        </span>
+                        {href && (
+                          <ArrowUpRight className="w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                        )}
+                      </>
+                    )
+                    return (
+                      <li key={label}>
+                        {href ? (
+                          <a
+                            href={href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noopener noreferrer" : undefined}
+                            className="group flex items-center gap-4 py-4 first:pt-0 last:pb-0"
+                          >
+                            {inner}
+                          </a>
+                        ) : (
+                          <div className="flex items-center gap-4 py-4 first:pt-0 last:pb-0">{inner}</div>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+
+              {/* WhatsApp emphasis */}
+              <div className="rounded-2xl p-6 md:p-8 bg-[#25D366]/10 border border-[#25D366]/25">
+                <div className="flex items-center gap-2 text-[#25D366] mb-3">
+                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                  <span className="text-xs uppercase tracking-[0.2em]">{content.fastResponse}</span>
+                </div>
+                <h3 className="text-lg md:text-xl font-medium text-foreground mb-2">{content.directTitle}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{content.directText}</p>
+                <div className="flex flex-col gap-3">
+                  <WhatsAppLink
+                    message={content.whatsappMessage}
+                    className="inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md bg-[#25D366] text-white text-sm font-medium hover:bg-[#20bd5a] transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    +237 676 961 949
+                  </WhatsAppLink>
+                  <WhatsAppLink
+                    useSecondary
+                    message={content.whatsappMessage}
+                    className="inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md border border-[#25D366]/40 text-foreground text-sm font-medium hover:bg-[#25D366]/10 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                    +237 698 217 257
+                  </WhatsAppLink>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
       </main>

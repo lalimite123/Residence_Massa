@@ -52,9 +52,9 @@ export function SiteNavigation({ locale, dict }: SiteNavigationProps) {
             <Image
               src="/images/logo-transparent.png"
               alt="Massa Residence"
-              width={160}
-              height={60}
-              className="h-10 md:h-12 w-auto object-contain"
+              width={240}
+              height={90}
+              className="h-14 md:h-20 w-auto object-contain"
               priority
             />
           </Link>

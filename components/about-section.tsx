@@ -26,8 +26,8 @@ export function AboutSection({ dict }: AboutSectionProps) {
               <div className="space-y-4">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
                   <Image
-                    src="/images/studio-bastos-1.jpg"
-                    alt="Interior"
+                    src="/images/real-chambre-1.jpg"
+                    alt="Chambre avec tête de lit en bois et éclairage LED"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -35,8 +35,8 @@ export function AboutSection({ dict }: AboutSectionProps) {
                 </div>
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-soft">
                   <Image
-                    src="/images/apt-omnisport-1.jpg"
-                    alt="Living room"
+                    src="/images/real-cuisine-1.jpg"
+                    alt="Cuisine équipée en marbre noir"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -46,8 +46,8 @@ export function AboutSection({ dict }: AboutSectionProps) {
               <div className="pt-8 space-y-4">
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-soft">
                   <Image
-                    src="/images/apt-nlongkak-1.jpg"
-                    alt="Bedroom"
+                    src="/images/real-salon.jpg"
+                    alt="Salon avec canapé d'angle en velours"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -55,8 +55,8 @@ export function AboutSection({ dict }: AboutSectionProps) {
                 </div>
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
                   <Image
-                    src="/images/villa-mfandena-1.jpg"
-                    alt="Villa"
+                    src="/images/real-salle-de-bain.jpg"
+                    alt="Salle de bain contemporaine"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
