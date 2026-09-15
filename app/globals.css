@@ -251,3 +251,11 @@
 .border-subtle {
   border-color: rgba(0, 0, 0, 0.06);
 }
+
+/* Hide scrollbar on horizontal chip rows */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

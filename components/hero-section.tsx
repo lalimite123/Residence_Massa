@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, Star, Users, MapPin, MessageCircle } from "lucide-react"
+import { ArrowRight, Star, Users, MapPin, MessageCircle, Camera } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { HeroCarousel } from "@/components/hero-carousel"
 import type { Dictionary } from "@/lib/i18n"
@@ -39,6 +39,7 @@ export function HeroSection({ dict, locale }: HeroSectionProps) {
     cta: dict.hero.cta,
     ctaSecondary: locale === "fr" ? "Écrire sur WhatsApp" : "Chat on WhatsApp",
     ctaHint: locale === "fr" ? "Réponse en quelques minutes" : "Reply within minutes",
+    gallery: locale === "fr" ? "Voir la galerie photos & vidéos" : "See the photo & video gallery",
     stats: {
       clients: locale === "fr" ? "Clients satisfaits" : "Satisfied clients",
       rating: locale === "fr" ? "Note moyenne" : "Average rating",
@@ -156,6 +157,20 @@ export function HeroSection({ dict, locale }: HeroSectionProps) {
                     <span className="text-[11px] text-white/60 mt-0.5">{content.ctaHint}</span>
                   </span>
                 </a>
+              </motion.div>
+
+              {/* Gallery link */}
+              <motion.div {...fadeUp(0.55)} className="-mt-3 mb-6">
+                <Link
+                  href={`/${locale}/galerie`}
+                  className="group inline-flex items-center gap-2 text-sm text-white/75 hover:text-amber-300 transition-colors"
+                >
+                  <Camera className="w-4 h-4 shrink-0" />
+                  <span className="underline underline-offset-4 decoration-white/30 group-hover:decoration-amber-300">
+                    {content.gallery}
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
+                </Link>
               </motion.div>
 
               {/* Stats strip */}

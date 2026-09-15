@@ -30,6 +30,7 @@ export function SiteNavigation({ locale, dict }: SiteNavigationProps) {
   const navItems = [
     { label: dict.nav.home, href: `/${locale}` },
     { label: dict.nav.properties, href: `/${locale}#properties` },
+    { label: dict.nav.gallery, href: `/${locale}/galerie` },
     { label: "Tarifs", href: `/${locale}#pricing` },
     { label: dict.nav.location, href: `/${locale}#location` },
   ]

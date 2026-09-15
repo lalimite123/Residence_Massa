@@ -1,15 +1,18 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { Check } from "lucide-react"
-import type { Dictionary } from "@/lib/i18n"
+import { Check, Camera, ArrowRight } from "lucide-react"
+import type { Dictionary, Locale } from "@/lib/i18n"
 
 interface AboutSectionProps {
   dict: Dictionary
+  locale: Locale
 }
 
-export function AboutSection({ dict }: AboutSectionProps) {
+export function AboutSection({ dict, locale }: AboutSectionProps) {
+  const galleryLabel = locale === "fr" ? "Voir toutes les photos" : "See all photos"
   return (
     <section id="about" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -22,7 +25,15 @@ export function AboutSection({ dict }: AboutSectionProps) {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <Link
+              href={`/${locale}/galerie`}
+              aria-label={galleryLabel}
+              className="group relative grid grid-cols-2 gap-4 rounded-2xl"
+            >
+              <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-medium border border-white/15 group-hover:bg-black/75 transition-colors">
+                <Camera className="w-3.5 h-3.5" />
+                {galleryLabel}
+              </span>
               <div className="space-y-4">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
                   <Image
@@ -63,7 +74,7 @@ export function AboutSection({ dict }: AboutSectionProps) {
                   />
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Stats overlay */}
             <motion.div
@@ -140,6 +151,15 @@ export function AboutSection({ dict }: AboutSectionProps) {
                 ))}
               </div>
             </div>
+
+            <Link
+              href={`/${locale}/galerie`}
+              className="group mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-2 h-12 px-6 rounded-full border border-foreground/15 bg-background text-foreground text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
+            >
+              <Camera className="w-4 h-4" />
+              {galleryLabel}
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </motion.div>
         </div>
       </div>

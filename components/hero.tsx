@@ -18,9 +18,10 @@ export function Hero() {
         <img
           src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1920&q=80"
           alt="Modern concrete building with geometric facade"
-          className={`w-full h-full object-cover transition-transform duration-[2s] ease-out ${
+          className={`w-full h-full object-cover transition-transform ease-out ${
             visible ? "scale-100" : "scale-110"
           }`}
+          style={{ transitionDuration: "2s" }}
         />
         <div className="absolute inset-0 bg-foreground/50" />
       </div>

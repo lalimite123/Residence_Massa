@@ -2,6 +2,7 @@ import { getDictionary, type Locale } from "@/lib/i18n"
 import { SiteNavigation } from "@/components/site-navigation"
 import { HeroSection } from "@/components/hero-section"
 import { FeaturedProperties } from "@/components/featured-properties"
+import { GalleryPreview } from "@/components/gallery-preview"
 import { PricingSection } from "@/components/pricing-section"
 import { AdvantagesSection } from "@/components/advantages-section"
 import { AboutSection } from "@/components/about-section"
@@ -24,9 +25,10 @@ export default async function HomePage({
       <main>
         <HeroSection dict={dict} locale={locale} />
         <FeaturedProperties dict={dict} locale={locale} />
+        <GalleryPreview locale={locale} />
         <PricingSection dict={dict} locale={locale} />
         <AdvantagesSection dict={dict} />
-        <AboutSection dict={dict} />
+        <AboutSection dict={dict} locale={locale} />
         <LocationSection dict={dict} />
         <CtaSection dict={dict} locale={locale} />
       </main>
