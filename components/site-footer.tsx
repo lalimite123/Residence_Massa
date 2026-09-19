@@ -31,7 +31,7 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
           <div className="lg:col-span-1">
             <Link href={`/${locale}`} className="inline-block mb-4">
               <Image
-                src="/images/logo-massa-residence.png"
+                src="/images/logo-transparent.png"
                 alt="Massa Residence"
                 width={180}
                 height={90}
