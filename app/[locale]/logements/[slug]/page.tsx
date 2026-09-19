@@ -66,7 +66,9 @@ export default async function PropertyDetailPage({
   const description = property.description[locale]
   const location = property.location[locale]
 
-  const whatsappMessage = `Bonjour Tonton Azis, je suis intéressé(e) par le logement "${name}" à ${location}.`
+  const whatsappMessage = locale === "fr"
+    ? `Bonjour, je souhaite avoir plus d'informations concernant le logement "${name}" situé à ${location}.`
+    : `Hello, I would like to get more information about the property "${name}" located in ${location}.`
 
   return (
     <>

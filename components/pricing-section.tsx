@@ -214,7 +214,7 @@ export function PricingSection({ locale }: PricingSectionProps) {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
               >
                 <a
-                  href="https://wa.me/237676961949?text=Bonjour, je suis interesse par vos residences"
+                  href={`https://wa.me/237676961949?text=${encodeURIComponent(locale === "fr" ? "Bonjour, je suis intéressé(e) par vos résidences meublées." : "Hello, I am interested in your furnished residences.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

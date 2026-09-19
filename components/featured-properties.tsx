@@ -477,7 +477,7 @@ function PropertyModal({
               asChild
             >
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBERS.primary}?text=${encodeURIComponent(`Bonjour Tonton Azis, je suis intéressé(e) par ${name}.`)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBERS.primary}?text=${encodeURIComponent(locale === "fr" ? `Bonjour, je suis intéressé(e) par ${name}.` : `Hello, I am interested in ${name}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
