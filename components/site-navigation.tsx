@@ -13,9 +13,11 @@ import type { Dictionary } from "@/lib/i18n"
 interface SiteNavigationProps {
   locale: Locale
   dict: Dictionary
+  /** Always show the dark background (for pages without a dark hero) */
+  solid?: boolean
 }
 
-export function SiteNavigation({ locale, dict }: SiteNavigationProps) {
+export function SiteNavigation({ locale, dict, solid = false }: SiteNavigationProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -41,7 +43,7 @@ export function SiteNavigation({ locale, dict }: SiteNavigationProps) {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || solid
           ? "bg-black/90 backdrop-blur-md"
           : "bg-transparent"
       }`}
@@ -53,9 +55,9 @@ export function SiteNavigation({ locale, dict }: SiteNavigationProps) {
             <Image
               src="/images/logo-transparent.png"
               alt="Massa Residence"
-              width={240}
-              height={90}
-              className="h-14 md:h-20 w-auto object-contain"
+              width={160}
+              height={60}
+              className="h-10 md:h-12 w-auto object-contain"
               priority
             />
           </Link>

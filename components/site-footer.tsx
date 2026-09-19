@@ -2,9 +2,10 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Facebook, Car } from "lucide-react"
+import { MapPin, Phone, Mail, Facebook } from "lucide-react"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { WHATSAPP_NUMBERS } from "@/components/whatsapp-button"
+import { VehicleModal } from "@/components/vehicle-modal"
 
 interface SiteFooterProps {
   dict: Dictionary
@@ -30,11 +31,11 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
           <div className="lg:col-span-1">
             <Link href={`/${locale}`} className="inline-block mb-4">
               <Image
-                src="/images/logo-transparent.png"
+                src="/images/logo-massa-residence.png"
                 alt="Massa Residence"
-                width={200}
-                height={80}
-                className="w-auto h-16 object-contain"
+                width={180}
+                height={90}
+                className="w-auto h-14 object-contain brightness-0 invert"
               />
             </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed mb-4">
@@ -52,10 +53,7 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
               <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/20 rounded text-xs text-primary">
                 Residences
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-amber-500/20 rounded text-xs text-amber-400">
-                <Car className="w-3 h-3" />
-                Vehicules
-              </span>
+              <VehicleModal locale={locale} />
             </div>
           </div>
 

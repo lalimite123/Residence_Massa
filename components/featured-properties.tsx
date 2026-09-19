@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Bed, Bath, Users, Wifi, Wind, Car, Check, ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { WHATSAPP_NUMBERS } from "@/components/whatsapp-button"
 import { getFeaturedProperties, formatPrice } from "@/lib/data/properties"
 import type { Property } from "@/lib/data/properties"
 import type { Dictionary } from "@/lib/i18n"
@@ -476,7 +477,7 @@ function PropertyModal({
               asChild
             >
               <a
-                href={`https://wa.me/237600000000?text=Bonjour, je suis intéressé par ${name}`}
+                href={`https://wa.me/${WHATSAPP_NUMBERS.primary}?text=${encodeURIComponent(`Bonjour Tonton Azis, je suis intéressé(e) par ${name}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

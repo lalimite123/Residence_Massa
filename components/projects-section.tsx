@@ -53,10 +53,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         <img
           src={project.image || "/placeholder.svg"}
           alt={`${project.title} - ${project.category} project in ${project.location}`}
-          className={`w-full aspect-[4/3] object-cover transition-all ease-out ${
+          className={`w-full aspect-[4/3] object-cover transition-all duration-[800ms] ease-out ${
             hovered ? "scale-[1.04]" : "scale-100"
           }`}
-          style={{ transitionDuration: "800ms" }}
         />
       </div>
       <div className="p-6 md:p-8 flex items-start justify-between">

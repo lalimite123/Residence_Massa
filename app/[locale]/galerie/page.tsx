@@ -54,7 +54,7 @@ export default async function GalleryPage({
 
   return (
     <>
-      <SiteNavigation locale={locale} dict={dict} />
+      <SiteNavigation locale={locale} dict={dict} solid />
       <main className="pt-20 md:pt-24 bg-background">
         <section className="container mx-auto px-4 md:px-6 pt-8 md:pt-16 pb-6 md:pb-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8">
