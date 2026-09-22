@@ -107,7 +107,7 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
                 <span className="break-all">massaresidence13@gmail.com</span>
               </a>
               <a
-                href="https://www.facebook.com/share/1MMNRcxk8Y/"
+                href="https://www.facebook.com/share/1GYMn2UgrW/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
