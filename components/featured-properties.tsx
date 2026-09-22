@@ -197,11 +197,11 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
             {/* Basic Info - Mobile optimized */}
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div className="flex justify-between py-1.5 border-b border-border/50">
-                <span className="text-muted-foreground text-xs">Chambres</span>
-                <span className="font-medium text-xs">{property.bedrooms || "Studio"}</span>
+                <span className="text-muted-foreground text-xs">{dict.properties.beds}</span>
+                <span className="font-medium text-xs">{property.bedrooms || (locale === 'fr' ? "Studio" : "Studio")}</span>
               </div>
               <div className="flex justify-between py-1.5 border-b border-border/50">
-                <span className="text-muted-foreground text-xs">Salle de bain</span>
+                <span className="text-muted-foreground text-xs">{dict.properties.bath}</span>
                 <span className="font-medium text-xs">{property.bathrooms}</span>
               </div>
               <div className="flex justify-between py-1.5 border-b border-border/50">
@@ -210,7 +210,7 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
               </div>
               <div className="flex justify-between py-1.5 border-b border-border/50">
                 <span className="text-muted-foreground text-xs">Parking</span>
-                <span className="font-medium text-xs">{property.amenities.includes("parking") ? "Oui" : "Non"}</span>
+                <span className="font-medium text-xs">{property.amenities.includes("parking") ? (locale === 'fr' ? "Oui" : "Yes") : (locale === 'fr' ? "Non" : "No")}</span>
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
             <div>
               <p className="text-xl font-semibold text-foreground">
                 {formatPrice(property.pricePerNight)}
-                <span className="text-xs font-normal text-muted-foreground">/nuit</span>
+                <span className="text-xs font-normal text-muted-foreground">{dict.properties.perNight}</span>
               </p>
             </div>
             <Button 
@@ -235,7 +235,7 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
             onClick={onViewDetails}
             className="hidden lg:inline-flex mt-3 text-sm font-medium text-primary hover:underline items-center gap-1"
           >
-            Voir les details
+            {dict.properties.viewDetails}
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>
@@ -245,9 +245,9 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
           <div>
             <p className="text-2xl font-semibold text-foreground">
               {formatPrice(property.pricePerNight)}
-              <span className="text-sm font-normal text-muted-foreground">/nuit</span>
+              <span className="text-sm font-normal text-muted-foreground">{dict.properties.perNight}</span>
             </p>
-            <p className="text-xs text-muted-foreground mt-1">Taxes incluses</p>
+            <p className="text-xs text-muted-foreground mt-1">{locale === 'fr' ? 'Taxes incluses' : 'Taxes included'}</p>
           </div>
 
           <div className="mt-4 space-y-3">

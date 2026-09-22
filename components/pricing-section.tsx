@@ -11,39 +11,50 @@ interface PricingSectionProps {
   locale: Locale
 }
 
-const pricingData = [
-  {
-    duration: "01 Jour",
-    studio: 55000,
-    apartment: 70000,
-  },
-  {
-    duration: "01 Semaine",
-    studio: 50000,
-    apartment: 65000,
-  },
-  {
-    duration: "02 Semaines",
-    studio: 45000,
-    apartment: 60000,
-  },
-  {
-    duration: "03 Semaines",
-    studio: 40000,
-    apartment: 55000,
-  },
-  {
-    duration: "01 Mois",
-    studio: 35000,
-    apartment: 50000,
-  },
-]
+const pricingData = {
+  fr: [
+    { duration: "01 Jour", studio: 55000, apartment: 70000 },
+    { duration: "01 Semaine", studio: 50000, apartment: 65000 },
+    { duration: "02 Semaines", studio: 45000, apartment: 60000 },
+    { duration: "03 Semaines", studio: 40000, apartment: 55000 },
+    { duration: "01 Mois", studio: 35000, apartment: 50000 },
+  ],
+  en: [
+    { duration: "01 Day", studio: 55000, apartment: 70000 },
+    { duration: "01 Week", studio: 50000, apartment: 65000 },
+    { duration: "02 Weeks", studio: 45000, apartment: 60000 },
+    { duration: "03 Weeks", studio: 40000, apartment: 55000 },
+    { duration: "01 Month", studio: 35000, apartment: 50000 },
+  ]
+}
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat("fr-FR").format(price)
 }
 
 export function PricingSection({ locale }: PricingSectionProps) {
+  const currentPricingData = pricingData[locale]
+
+  const text = {
+    title: locale === 'fr' ? 'Notre Grille Tarifaire' : 'Our Pricing Plan',
+    subtitle: locale === 'fr' ? 'Tarification' : 'Pricing',
+    studioTitle: locale === 'fr' ? 'STUDIO MODERNE' : 'MODERN STUDIO',
+    studioDesc: locale === 'fr' ? '1 chambre, 1 salle de bain, salon, cuisine et balcon' : '1 bedroom, 1 bathroom, living room, kitchen and balcony',
+    aptTitle: locale === 'fr' ? 'APPARTEMENT MODERNE' : 'MODERN APARTMENT',
+    aptDesc: locale === 'fr' ? '2 chambres, 2 salles de bain, salon, cuisine et 2 balcons' : '2 bedrooms, 2 bathrooms, living room, kitchen and 2 balconies',
+    perDay: locale === 'fr' ? 'FCFA/Jour' : 'FCFA/Day',
+    daysCount: locale === 'fr' ? 'NOMBRE DE JOURS' : 'NUMBER OF DAYS',
+    vatNote: locale === 'fr' ? 'NB.: TVA en SUS' : 'Note: VAT excluded',
+    reception: locale === 'fr' ? 'Reception 24h/24' : '24/7 Reception',
+    receptionDesc: locale === 'fr' ? 'Notre equipe est disponible a tout moment pour vous accueillir.' : 'Our team is available at all times to welcome you.',
+    shuttle: locale === 'fr' ? 'Navette Aeroport Gratuite' : 'Free Airport Shuttle',
+    shuttleDesc: locale === 'fr' ? 'Service de navette inclus pour votre confort.' : 'Shuttle service included for your comfort.',
+    wifi: locale === 'fr' ? 'Wi-Fi inclus' : 'Free Wi-Fi',
+    ac: locale === 'fr' ? 'Climatisation' : 'Air Conditioning',
+    kitchen: locale === 'fr' ? 'Cuisine equipee' : 'Equipped kitchen',
+    car: locale === 'fr' ? 'Location de vehicules' : 'Car rental',
+    bookBtn: locale === 'fr' ? 'Reserver maintenant' : 'Book now'
+  }
   return (
     <section id="pricing" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,10 +67,10 @@ export function PricingSection({ locale }: PricingSectionProps) {
           className="text-center mb-10 md:mb-14"
         >
           <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3 block">
-            Tarification
+            {text.subtitle}
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-foreground tracking-tight">
-            Notre Grille Tarifaire
+            {text.title}
           </h2>
         </motion.div>
 
@@ -74,14 +85,14 @@ export function PricingSection({ locale }: PricingSectionProps) {
           {/* Studio Card */}
           <div className="bg-white rounded-2xl border border-border shadow-soft overflow-hidden">
             <div className="bg-emerald-600 text-white p-4 text-center">
-              <h3 className="font-semibold text-lg">STUDIO MODERNE</h3>
-              <p className="text-sm text-white/80 mt-1">1 chambre, 1 salle de bain, salon, cuisine et balcon</p>
+              <h3 className="font-semibold text-lg">{text.studioTitle}</h3>
+              <p className="text-sm text-white/80 mt-1">{text.studioDesc}</p>
             </div>
             <div className="divide-y divide-border">
-              {pricingData.map((row, index) => (
+              {currentPricingData.map((row, index) => (
                 <div key={index} className="flex justify-between items-center p-4">
                   <span className="text-sm text-muted-foreground">{row.duration}</span>
-                  <span className="font-semibold text-foreground">{formatPrice(row.studio)} FCFA/Jour</span>
+                  <span className="font-semibold text-foreground">{formatPrice(row.studio)} {text.perDay}</span>
                 </div>
               ))}
             </div>
@@ -90,14 +101,14 @@ export function PricingSection({ locale }: PricingSectionProps) {
           {/* Apartment Card */}
           <div className="bg-white rounded-2xl border border-border shadow-soft overflow-hidden">
             <div className="bg-amber-500 text-white p-4 text-center">
-              <h3 className="font-semibold text-lg">APPARTEMENT MODERNE</h3>
-              <p className="text-sm text-white/80 mt-1">2 chambres, 2 salles de bain, salon, cuisine et 2 balcons</p>
+              <h3 className="font-semibold text-lg">{text.aptTitle}</h3>
+              <p className="text-sm text-white/80 mt-1">{text.aptDesc}</p>
             </div>
             <div className="divide-y divide-border">
-              {pricingData.map((row, index) => (
+              {currentPricingData.map((row, index) => (
                 <div key={index} className="flex justify-between items-center p-4">
                   <span className="text-sm text-muted-foreground">{row.duration}</span>
-                  <span className="font-semibold text-foreground">{formatPrice(row.apartment)} FCFA/Jour</span>
+                  <span className="font-semibold text-foreground">{formatPrice(row.apartment)} {text.perDay}</span>
                 </div>
               ))}
             </div>
@@ -116,20 +127,20 @@ export function PricingSection({ locale }: PricingSectionProps) {
             {/* Table Header */}
             <div className="grid grid-cols-3">
               <div className="bg-secondary p-4 lg:p-6 flex items-center justify-center">
-                <span className="font-semibold text-foreground text-center">NOMBRE DE JOURS</span>
+                <span className="font-semibold text-foreground text-center">{text.daysCount}</span>
               </div>
               <div className="bg-emerald-600 p-4 lg:p-6 text-center text-white">
-                <h3 className="font-bold text-lg">STUDIO MODERNE</h3>
-                <p className="text-sm text-white/80 mt-1">(1 chambre, 1 salle de bain, salon, cuisine et balcon)</p>
+                <h3 className="font-bold text-lg">{text.studioTitle}</h3>
+                <p className="text-sm text-white/80 mt-1">({text.studioDesc})</p>
               </div>
               <div className="bg-amber-500 p-4 lg:p-6 text-center text-white">
-                <h3 className="font-bold text-lg">APPARTEMENT MODERNE</h3>
-                <p className="text-sm text-white/80 mt-1">(2 chambres, 2 salles de bain, salon, cuisine et 2 balcons)</p>
+                <h3 className="font-bold text-lg">{text.aptTitle}</h3>
+                <p className="text-sm text-white/80 mt-1">({text.aptDesc})</p>
               </div>
             </div>
 
             {/* Table Body */}
-            {pricingData.map((row, index) => {
+            {currentPricingData.map((row, index) => {
               const rowColors = [
                 "bg-red-100",
                 "bg-orange-100",
@@ -143,10 +154,10 @@ export function PricingSection({ locale }: PricingSectionProps) {
                     <span className="font-medium text-foreground">{row.duration}</span>
                   </div>
                   <div className="p-4 lg:p-5 flex items-center justify-center border-r border-border/50">
-                    <span className="font-semibold text-foreground">{formatPrice(row.studio)} FCFA/Jour</span>
+                    <span className="font-semibold text-foreground">{formatPrice(row.studio)} {text.perDay}</span>
                   </div>
                   <div className="p-4 lg:p-5 flex items-center justify-center">
-                    <span className="font-semibold text-foreground">{formatPrice(row.apartment)} FCFA/Jour</span>
+                    <span className="font-semibold text-foreground">{formatPrice(row.apartment)} {text.perDay}</span>
                   </div>
                 </div>
               )
@@ -154,7 +165,7 @@ export function PricingSection({ locale }: PricingSectionProps) {
 
             {/* Footer Note */}
             <div className="bg-sky-100 p-4 text-center">
-              <span className="text-sm text-foreground font-medium">NB.: TVA en SUS</span>
+              <span className="text-sm text-foreground font-medium">{text.vatNote}</span>
             </div>
           </div>
         </motion.div>
@@ -174,8 +185,8 @@ export function PricingSection({ locale }: PricingSectionProps) {
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Reception 24h/24</h3>
-                  <p className="text-sm text-muted-foreground">Notre equipe est disponible a tout moment pour vous accueillir.</p>
+                  <h3 className="font-semibold text-foreground mb-1">{text.reception}</h3>
+                  <p className="text-sm text-muted-foreground">{text.receptionDesc}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -183,8 +194,8 @@ export function PricingSection({ locale }: PricingSectionProps) {
                   <Plane className="w-6 h-6 text-amber-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Navette Aeroport Gratuite</h3>
-                  <p className="text-sm text-muted-foreground">Service de navette inclus pour votre confort.</p>
+                  <h3 className="font-semibold text-foreground mb-1">{text.shuttle}</h3>
+                  <p className="text-sm text-muted-foreground">{text.shuttleDesc}</p>
                 </div>
               </div>
             </div>
@@ -192,19 +203,19 @@ export function PricingSection({ locale }: PricingSectionProps) {
             <div className="mt-6 pt-6 border-t border-border/50 flex flex-wrap gap-4 justify-center">
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-sm text-muted-foreground">Wi-Fi inclus</span>
+                <span className="text-sm text-muted-foreground">{text.wifi}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-sm text-muted-foreground">Climatisation</span>
+                <span className="text-sm text-muted-foreground">{text.ac}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-sm text-muted-foreground">Cuisine equipee</span>
+                <span className="text-sm text-muted-foreground">{text.kitchen}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-sm text-muted-foreground">Location de vehicules</span>
+                <span className="text-sm text-muted-foreground">{text.car}</span>
               </div>
             </div>
 
@@ -218,7 +229,7 @@ export function PricingSection({ locale }: PricingSectionProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Reserver maintenant
+                  {text.bookBtn}
                 </a>
               </Button>
             </div>
