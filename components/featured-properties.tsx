@@ -169,7 +169,7 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
         <div className="relative h-48 md:h-full min-h-[180px]">
           <Image
             src={property.images[0]}
-            alt={name}
+            alt={locale === 'fr' ? `Vue du ${name}, logement meublé de luxe à Yaoundé` : `View of ${name}, luxury furnished accommodation in Yaounde`}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 280px"

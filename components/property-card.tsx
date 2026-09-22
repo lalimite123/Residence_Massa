@@ -27,7 +27,7 @@ export function PropertyCard({ property, locale, dict }: PropertyCardProps) {
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={property.images[0]}
-            alt={property.name[locale]}
+            alt={locale === 'fr' ? `Vue du ${property.name[locale]}, location meublée à Yaoundé` : `View of ${property.name[locale]}, furnished rental in Yaounde`}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

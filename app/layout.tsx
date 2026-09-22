@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     icon: "/images/logo-transparent.png",
     apple: "/images/logo-transparent.png",
   },
+  verification: {
+    google: "_FKv0sq03ociyeJaCQWJbZRA4DBSTxz4pSwu-MVPUQw",
+  },
 }
 
 export const viewport: Viewport = {

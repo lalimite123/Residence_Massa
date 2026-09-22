@@ -87,7 +87,7 @@ export default async function PropertyDetailPage({
 
         {/* Gallery */}
         <section className="container mx-auto px-4 md:px-6 mb-10">
-          <PropertyGallery images={property.images} propertyName={name} />
+          <PropertyGallery images={property.images} propertyName={name} locale={locale} />
         </section>
 
         {/* Content */}

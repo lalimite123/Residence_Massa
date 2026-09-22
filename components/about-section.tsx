@@ -38,7 +38,7 @@ export function AboutSection({ dict, locale }: AboutSectionProps) {
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
                   <Image
                     src="/images/real-chambre-1.jpg"
-                    alt="Chambre avec tête de lit en bois et éclairage LED"
+                    alt="Chambre luxueuse avec tête de lit en bois dans un appartement Massa Residence à Yaoundé"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -47,7 +47,7 @@ export function AboutSection({ dict, locale }: AboutSectionProps) {
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-soft">
                   <Image
                     src="/images/real-cuisine-1.jpg"
-                    alt="Cuisine équipée en marbre noir"
+                    alt="Cuisine moderne équipée en marbre noir, location meublée haut de gamme Yaoundé"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -58,7 +58,7 @@ export function AboutSection({ dict, locale }: AboutSectionProps) {
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-soft">
                   <Image
                     src="/images/real-salon.jpg"
-                    alt="Salon avec canapé d'angle en velours"
+                    alt="Salon confortable avec canapé d'angle en velours, appartement meublé Fougerolle Yaoundé"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -67,7 +67,7 @@ export function AboutSection({ dict, locale }: AboutSectionProps) {
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
                   <Image
                     src="/images/real-salle-de-bain.jpg"
-                    alt="Salle de bain contemporaine"
+                    alt="Salle de bain contemporaine et élégante, standard de luxe Massa Residence Yaoundé"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"

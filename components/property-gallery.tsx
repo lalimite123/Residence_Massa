@@ -5,12 +5,15 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+import type { Locale } from "@/lib/i18n"
+
 interface PropertyGalleryProps {
   images: string[]
   propertyName: string
+  locale: Locale
 }
 
-export function PropertyGallery({ images, propertyName }: PropertyGalleryProps) {
+export function PropertyGallery({ images, propertyName, locale }: PropertyGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
 
@@ -36,7 +39,7 @@ export function PropertyGallery({ images, propertyName }: PropertyGalleryProps) 
         >
           <Image
             src={images[0]}
-            alt={`Vue principale du logement - Photo 1`}
+            alt={locale === 'fr' ? `Vue principale du logement meublé à Yaoundé - Photo 1` : `Main view of furnished accommodation in Yaounde - Photo 1`}
             fill
             className="object-cover hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, 66vw"
@@ -57,7 +60,7 @@ export function PropertyGallery({ images, propertyName }: PropertyGalleryProps) 
             >
               <Image
                 src={image}
-                alt={`Vue de l'appartement - Photo ${index + 2}`}
+                alt={locale === 'fr' ? `Détail de l'intérieur, appartement meublé Yaoundé - Photo ${index + 2}` : `Interior detail, furnished apartment Yaounde - Photo ${index + 2}`}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 25vw"
