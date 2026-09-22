@@ -3,21 +3,23 @@
 import { MapPin, Navigation, Clock, Phone, Car, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import type { Dictionary } from "@/lib/i18n"
+import type { Dictionary, Locale } from "@/lib/i18n"
 import { WHATSAPP_NUMBERS } from "@/components/whatsapp-button"
+import { VehicleModal } from "@/components/vehicle-modal"
 
 interface LocationSectionProps {
   dict: Dictionary
+  locale: Locale
 }
 
-export function LocationSection({ dict }: LocationSectionProps) {
+export function LocationSection({ dict, locale }: LocationSectionProps) {
   const googleMapsUrl = "https://maps.app.goo.gl/TjNjhEFNHhQfaRm29?g_st=aw"
 
   const nearbyPlaces = [
-    { name: "Centre-ville Yaounde", time: "10 min" },
-    { name: "Aeroport International", time: "25 min" },
-    { name: "Gare routiere", time: "15 min" },
-    { name: "Centre Commercial", time: "8 min" },
+    { name: dict.location.places?.downtown || "Centre-ville Yaoundé", time: "10 min" },
+    { name: dict.location.places?.airport || "Aéroport International", time: "25 min" },
+    { name: dict.location.places?.station || "Gare routière", time: "15 min" },
+    { name: dict.location.places?.mall || "Centre Commercial", time: "8 min" },
   ]
 
   return (
@@ -95,10 +97,10 @@ export function LocationSection({ dict }: LocationSectionProps) {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Adresse</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{dict.location.labels?.address || "Adresse"}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Yaounde - Fougerolle<br />
-                    GPS: 2271 Rue 5.525
+                    {dict.location.address.split(', ')[0]}<br />
+                    {dict.location.address.split(', ')[1]}
                   </p>
                 </div>
               </div>
@@ -111,7 +113,7 @@ export function LocationSection({ dict }: LocationSectionProps) {
                   <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Disponibilite</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{dict.location.labels?.availability || "Disponibilité"}</h3>
                   <p className="text-sm text-muted-foreground">{dict.contact.hours}</p>
                 </div>
               </div>
@@ -124,7 +126,7 @@ export function LocationSection({ dict }: LocationSectionProps) {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{dict.location.labels?.whatsapp || "WhatsApp"}</h3>
                   <div className="space-y-1">
                     <a
                       href={`https://wa.me/${WHATSAPP_NUMBERS.primary}`}
@@ -148,21 +150,23 @@ export function LocationSection({ dict }: LocationSectionProps) {
             </div>
 
             {/* Vehicle Rental Card */}
-            <div className="bg-amber-50 rounded-xl p-5 shadow-soft border border-amber-200">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
-                  <Car className="w-5 h-5 text-amber-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Location de Vehicules</h3>
-                  <p className="text-sm text-muted-foreground">Service disponible sur demande</p>
+            <VehicleModal locale={locale}>
+              <div className="bg-amber-50 rounded-xl p-5 shadow-soft border border-amber-200 hover:bg-amber-100 transition-colors h-full">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
+                    <Car className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground mb-1">{dict.location.labels?.vehicleRental || "Location de Véhicules"}</h3>
+                    <p className="text-sm text-muted-foreground">{dict.location.labels?.vehicleService || "Service disponible sur demande"}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </VehicleModal>
 
             {/* Nearby Places */}
             <div className="bg-white rounded-xl p-5 shadow-soft">
-              <h3 className="font-semibold text-foreground mb-4">Proximite</h3>
+              <h3 className="font-semibold text-foreground mb-4">{dict.location.labels?.nearby || "À Proximité"}</h3>
               <div className="space-y-3">
                 {nearbyPlaces.map((place, index) => (
                   <div key={index} className="flex items-center justify-between text-sm">

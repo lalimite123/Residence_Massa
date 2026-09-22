@@ -29,7 +29,7 @@ export default async function HomePage({
         <PricingSection dict={dict} locale={locale} />
         <AdvantagesSection dict={dict} />
         <AboutSection dict={dict} locale={locale} />
-        <LocationSection dict={dict} />
+        <LocationSection dict={dict} locale={locale} />
         <CtaSection dict={dict} locale={locale} />
       </main>
       <SiteFooter dict={dict} locale={locale} />

@@ -11,9 +11,10 @@ import type { Locale } from "@/lib/i18n"
 
 interface VehicleModalProps {
   locale: Locale
+  children?: React.ReactNode
 }
 
-export function VehicleModal({ locale }: VehicleModalProps) {
+export function VehicleModal({ locale, children }: VehicleModalProps) {
   const [open, setOpen] = useState(false)
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)
@@ -49,14 +50,20 @@ export function VehicleModal({ locale }: VehicleModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 px-2 py-1 bg-amber-500/20 hover:bg-amber-500/30 rounded text-xs text-amber-400 transition-colors"
-      >
-        <Car className="w-3 h-3" />
-        {t.trigger}
-      </button>
+      {children ? (
+        <div onClick={() => setOpen(true)} className="cursor-pointer w-full h-full" role="button" tabIndex={0}>
+          {children}
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="inline-flex items-center gap-1.5 px-2 py-1 bg-amber-500/20 hover:bg-amber-500/30 rounded text-xs text-amber-400 transition-colors"
+        >
+          <Car className="w-3 h-3" />
+          {t.trigger}
+        </button>
+      )}
 
       <DialogContent className="w-[calc(100%-2rem)] max-w-[400px] p-0 gap-0 overflow-hidden rounded-[28px] border-0 bg-white text-neutral-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] font-sans [&>button:last-child]:right-4 [&>button:last-child]:top-4 [&>button:last-child]:z-20 [&>button:last-child]:h-8 [&>button:last-child]:w-8 [&>button:last-child]:rounded-full [&>button:last-child]:bg-white/85 [&>button:last-child]:backdrop-blur [&>button:last-child]:shadow-sm [&>button:last-child]:opacity-100 [&>button:last-child]:flex [&>button:last-child]:items-center [&>button:last-child]:justify-center [&>button:last-child]:text-neutral-700">
         <DialogTitle className="sr-only">{name}</DialogTitle>

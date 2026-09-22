@@ -70,7 +70,7 @@ export function CookieConsent({ dict, locale }: CookieConsentProps) {
               <div className="flex items-center gap-3 w-full md:w-auto self-end md:self-auto shrink-0">
                 <Button 
                   variant="outline" 
-                  className="flex-1 md:flex-none border-white/20 text-white hover:bg-white/10 hover:text-white"
+                  className="flex-1 md:flex-none bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
                   onClick={declineCookies}
                 >
                   {dict.cookies.decline}

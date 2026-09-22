@@ -89,7 +89,21 @@
     "subtitle": "Ideally located in Yaoundé - Fougerolle",
     "address": "Yaoundé - Fougerolle, GPS: 2271 Rue 5.525",
     "directions": "Get directions",
-    "description": "Our residences are strategically located in Fougerolle, Yaoundé. We also offer vehicle rental services to make your travel easier."
+    "description": "Our residences are strategically located in Fougerolle, Yaoundé. We also offer vehicle rental services to make your travel easier.",
+    "labels": {
+      "address": "Address",
+      "availability": "Availability",
+      "whatsapp": "WhatsApp",
+      "vehicleRental": "Vehicle Rental",
+      "vehicleService": "Service available on request",
+      "nearby": "Nearby Places"
+    },
+    "places": {
+      "downtown": "Yaoundé Downtown",
+      "airport": "International Airport",
+      "station": "Bus Station",
+      "mall": "Shopping Mall"
+    }
   },
   "contact": {
     "title": "Let's Connect",
