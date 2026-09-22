@@ -51,7 +51,7 @@ export function VehicleModal({ locale, children }: VehicleModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {children ? (
-        <div onClick={() => setOpen(true)} className="cursor-pointer w-full h-full" role="button" tabIndex={0}>
+        <div onClick={() => setOpen(true)} className="cursor-pointer w-full block" role="button" tabIndex={0}>
           {children}
         </div>
       ) : (
