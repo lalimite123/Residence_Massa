@@ -106,7 +106,7 @@ export function GalleryGrid({ locale, items }: GalleryGridProps) {
             >
               <Image
                 src={item.type === "video" ? item.poster! : item.src}
-                alt={item.caption[locale]}
+                alt={item.caption[locale] || "Image de la galerie"}
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

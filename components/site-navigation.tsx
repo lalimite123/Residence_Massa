@@ -54,7 +54,7 @@ export function SiteNavigation({ locale, dict, solid = false }: SiteNavigationPr
           <Link href={`/${locale}`} className="flex items-center">
             <Image
               src="/images/logo-transparent.png"
-              alt="Massa Residence"
+              alt="Logo Massa Residence Meublé"
               width={160}
               height={60}
               className="h-10 md:h-12 w-auto object-contain"

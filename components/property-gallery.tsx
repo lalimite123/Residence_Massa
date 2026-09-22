@@ -36,7 +36,7 @@ export function PropertyGallery({ images, propertyName }: PropertyGalleryProps) 
         >
           <Image
             src={images[0]}
-            alt={propertyName}
+            alt={`Vue principale du logement - Photo 1`}
             fill
             className="object-cover hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, 66vw"
@@ -57,10 +57,10 @@ export function PropertyGallery({ images, propertyName }: PropertyGalleryProps) 
             >
               <Image
                 src={image}
-                alt={`${propertyName} - ${index + 2}`}
+                alt={`Vue de l'appartement - Photo ${index + 2}`}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="33vw"
+                className="object-cover transition-transform duration-500 hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
               {index === 1 && images.length > 3 && (
                 <div className="absolute inset-0 bg-foreground/50 flex items-center justify-center">

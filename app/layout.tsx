@@ -17,8 +17,13 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://massaresidence.com"),
   title: "Massa Residence Meublé | Logements de Luxe à Yaoundé",
   description: "Découvrez l'excellence de nos résidences meublées haut de gamme à Yaoundé, Cameroun. Confort exceptionnel, design élégant et service personnalisé.",
+  icons: {
+    icon: "/images/logo-transparent.png",
+    apple: "/images/logo-transparent.png",
+  },
 }
 
 export const viewport: Viewport = {

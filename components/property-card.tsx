@@ -27,9 +27,9 @@ export function PropertyCard({ property, locale, dict }: PropertyCardProps) {
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={property.images[0]}
-            alt={name}
+            alt={property.name[locale]}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           {/* Gradient overlay */}

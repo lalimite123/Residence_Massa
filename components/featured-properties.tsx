@@ -325,15 +325,15 @@ function PropertyModal({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
               className="absolute inset-0"
             >
               <Image
                 src={property.images[currentImageIndex] || property.images[0]}
-                alt={`${name} - Image ${currentImageIndex + 1}`}
+                alt={`Photo ${currentImageIndex + 1} de ${name}`}
                 fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 900px"
+                className="object-contain"
+                sizes="100vw"
               />
             </motion.div>
           </AnimatePresence>

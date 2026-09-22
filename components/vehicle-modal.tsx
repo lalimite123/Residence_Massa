@@ -77,7 +77,7 @@ export function VehicleModal({ locale }: VehicleModalProps) {
             >
               <Image
                 src={vehicle.image}
-                alt={name}
+                alt={`Photo de la voiture ${name}`}
                 fill
                 sizes="400px"
                 className="object-cover"

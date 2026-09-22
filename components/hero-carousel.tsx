@@ -86,7 +86,7 @@ export function HeroCarousel({ locale, slides = HERO_SLIDES, overlay }: HeroCaro
         >
           <Image
             src={current.src}
-            alt={current.alt[locale]}
+            alt={current.alt[locale] || "Vue intérieure d'un appartement Massa Residence Meublé"}
             fill
             priority={index === 0}
             sizes="100vw"

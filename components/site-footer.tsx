@@ -32,10 +32,10 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
             <Link href={`/${locale}`} className="inline-block mb-4">
               <Image
                 src="/images/logo-transparent.png"
-                alt="Massa Residence"
+                alt="Logo Massa Residence Meublé - Pied de page"
                 width={180}
                 height={90}
-                className="w-auto h-14 object-contain brightness-0 invert"
+                className="w-auto h-16 object-contain"
               />
             </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed mb-4">
