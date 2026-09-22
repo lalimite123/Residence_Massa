@@ -120,6 +120,12 @@
       "terms": "Conditions"
     }
   },
+  "cookies": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience, analyser notre trafic et vous proposer des services adaptés. En poursuivant votre navigation, vous acceptez notre ",
+    "policyLink": "politique de confidentialité",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
   "common": {
     "learnMore": "En savoir plus",
     "back": "Retour",

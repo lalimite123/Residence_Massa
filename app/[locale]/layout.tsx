@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata, Viewport } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import { getDictionary, type Locale, locales } from "@/lib/i18n"
+import { CookieConsent } from "@/components/cookie-consent"
 
 import "../globals.css"
 
@@ -75,10 +76,11 @@ export default async function LocaleLayout({
   params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
-
+  const dict = await getDictionary(locale)
   return (
     <div lang={locale} className={`${inter.variable} ${playfair.variable} bg-background font-sans antialiased overflow-x-hidden`}>
       {children}
+      <CookieConsent dict={dict} locale={locale} />
     </div>
   )
 }

@@ -120,6 +120,12 @@
       "terms": "Terms"
     }
   },
+  "cookies": {
+    "message": "We use cookies to improve your experience, analyze our traffic, and provide tailored services. By continuing to browse, you agree to our ",
+    "policyLink": "privacy policy",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "common": {
     "learnMore": "Learn more",
     "back": "Back",
