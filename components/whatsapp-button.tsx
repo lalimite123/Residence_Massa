@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 const WHATSAPP_NUMBERS = {
-  primary: "237676961949",
+  primary: "237655535857",
   secondary: "237698217257"
 }
 

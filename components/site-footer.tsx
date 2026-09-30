@@ -88,7 +88,7 @@ export function SiteFooter({ dict, locale }: SiteFooterProps) {
                 className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>+237 676 961 949</span>
+                <span>+237 655 53 58 57</span>
               </a>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBERS.secondary}`}

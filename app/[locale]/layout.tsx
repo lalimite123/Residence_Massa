@@ -30,13 +30,16 @@ export async function generateMetadata({
     title: dict.meta.title,
     description: dict.meta.description,
     keywords: [
-      "logement meublé Yaoundé",
-      "appartement luxe Yaoundé",
-      "location Cameroun",
-      "furnished apartment Yaoundé",
-      "Massa Residence",
-      "résidence meublée",
-      "luxury accommodation Cameroon",
+      "appartement meublé yaoundé",
+      "appartement cameroun yaoundé",
+      "location appartement yaoundé",
+      "logement meublé yaoundé",
+      "appartement luxe yaoundé",
+      "location cameroun",
+      "furnished apartment yaounde",
+      "luxury accommodation cameroon",
+      "résidence meublée cameroun",
+      "Massa Residence"
     ],
     openGraph: {
       title: dict.meta.title,

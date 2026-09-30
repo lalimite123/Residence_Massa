@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Massa Residence Meublé | Luxury Furnished Residences in Yaoundé",
-    "description": "Experience the excellence of our premium furnished residences in Yaoundé, Cameroon. Exceptional comfort, elegant design and personalized service."
+    "title": "Furnished Apartment Yaounde | Luxury Rentals Cameroon - Massa Residence",
+    "description": "Book your luxury furnished apartment in Yaounde, Cameroon. Premium, secure, fully equipped studios and apartments for short and long stays. The best accommodation in Cameroon."
   },
   "nav": {
     "home": "Home",
@@ -35,7 +35,9 @@
     "available": "Available",
     "booked": "Booked",
     "bookNow": "Book now",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "cleanliness": "Guaranteed cleanliness",
+    "modernEquipments": "Modern equipment"
   },
   "amenities": {
     "wifi": "High-Speed WiFi",

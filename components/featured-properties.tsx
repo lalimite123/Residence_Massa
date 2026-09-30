@@ -251,15 +251,15 @@ function PropertyListCard({ property, locale, dict, onViewDetails }: PropertyLis
           </div>
 
           <div className="mt-4 space-y-3">
-            {/* Amenities highlights */}
+            {/* Amenities Highlights */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-muted-foreground text-xs">Proprete garantie</span>
+                <span className="text-muted-foreground text-xs">{dict.properties.cleanliness}</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Check className="w-4 h-4 text-green-600" />
-                <span className="text-muted-foreground text-xs">Equipements modernes</span>
+                <span className="text-muted-foreground text-xs">{dict.properties.modernEquipments}</span>
               </div>
             </div>
 
@@ -413,10 +413,10 @@ function PropertyModal({
             <div className="text-right">
               <p className="text-2xl font-bold text-primary">
                 {formatPrice(property.pricePerNight)}
-                <span className="text-sm font-normal text-muted-foreground">/nuit</span>
+                <span className="text-sm font-normal text-muted-foreground">{dict.properties.perNight}</span>
               </p>
               <p className="text-sm text-muted-foreground">
-                ou {formatPrice(property.pricePerMonth)}/mois
+                {locale === "fr" ? "ou" : "or"} {formatPrice(property.pricePerMonth)}{dict.properties.perMonth}
               </p>
             </div>
           </div>
@@ -428,21 +428,21 @@ function PropertyModal({
             <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-xl">
               <Bed className="w-5 h-5 text-primary" />
               <div>
-                <p className="text-xs text-muted-foreground">Chambres</p>
+                <p className="text-xs text-muted-foreground">{dict.properties.beds}</p>
                 <p className="font-medium">{property.bedrooms || "Studio"}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-xl">
               <Bath className="w-5 h-5 text-primary" />
               <div>
-                <p className="text-xs text-muted-foreground">Salle de bain</p>
+                <p className="text-xs text-muted-foreground">{dict.properties.bath}</p>
                 <p className="font-medium">{property.bathrooms}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-xl">
               <Users className="w-5 h-5 text-primary" />
               <div>
-                <p className="text-xs text-muted-foreground">Personnes</p>
+                <p className="text-xs text-muted-foreground">{dict.properties.guests}</p>
                 <p className="font-medium">{property.maxGuests}</p>
               </div>
             </div>

@@ -40,7 +40,7 @@ export default async function ContactPage({
     {
       icon: Phone,
       label: dict.contact.call,
-      value: "+237 676 961 949",
+      value: "+237 655 53 58 57",
       href: `tel:+${WHATSAPP_NUMBERS.primary}`,
     },
     {
@@ -187,7 +187,7 @@ export default async function ContactPage({
                     className="inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md bg-[#25D366] text-white text-sm font-medium hover:bg-[#20bd5a] transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    +237 676 961 949
+                    +237 655 53 58 57
                   </WhatsAppLink>
                   <WhatsAppLink
                     useSecondary

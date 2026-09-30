@@ -134,7 +134,7 @@ export function LocationSection({ dict, locale }: LocationSectionProps) {
                       rel="noopener noreferrer"
                       className="text-sm text-primary hover:underline block"
                     >
-                      +237 676 961 949
+                      +237 655 53 58 57
                     </a>
                     <a
                       href={`https://wa.me/${WHATSAPP_NUMBERS.secondary}`}

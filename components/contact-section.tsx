@@ -127,7 +127,7 @@ export function ContactSection({ dict, locale }: ContactSectionProps) {
                   className="flex items-center gap-2 text-sm text-background/55 hover:text-background transition-colors"
                 >
                   <Phone className="h-4 w-4" />
-                  +237 676 961 949
+                  +237 655 53 58 57
                 </a>
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBERS.secondary}`}

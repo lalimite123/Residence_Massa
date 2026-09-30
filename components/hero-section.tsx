@@ -13,7 +13,7 @@ interface HeroSectionProps {
   locale: Locale
 }
 
-const WHATSAPP_URL = "https://wa.me/237676961949"
+const WHATSAPP_URL = "https://wa.me/237655535857"
 
 export function HeroSection({ dict, locale }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null)

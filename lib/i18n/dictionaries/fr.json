@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Massa Residence Meublé | Logements de Luxe à Yaoundé",
-    "description": "Découvrez l'excellence de nos résidences meublées haut de gamme à Yaoundé, Cameroun. Confort exceptionnel, design élégant et service personnalisé."
+    "title": "Appartement Meublé Yaoundé | Location Luxe Cameroun - Massa Residence",
+    "description": "Réservez votre appartement meublé de luxe à Yaoundé, Cameroun. Studios et appartements haut de gamme, sécurisés, tout équipés pour courts et longs séjours. Le meilleur logement au Cameroun."
   },
   "nav": {
     "home": "Accueil",
@@ -35,7 +35,9 @@
     "available": "Disponible",
     "booked": "Réservé",
     "bookNow": "Réserver maintenant",
-    "contactUs": "Nous contacter"
+    "contactUs": "Nous contacter",
+    "cleanliness": "Propreté garantie",
+    "modernEquipments": "Équipements modernes"
   },
   "amenities": {
     "wifi": "WiFi Haut Débit",
